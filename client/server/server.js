@@ -16,42 +16,24 @@ const io = new Server(server, {
   }
 });
 
-
-// رسالة دخول
 io.on("connection", (socket) => {
 
-  console.log("مستخدم دخل:", socket.id);
+  console.log("User connected:", socket.id);
 
-
-  // استقبال الرسائل
   socket.on("sendMessage", (data) => {
-
     io.emit("receiveMessage", data);
-
   });
 
-
-  // خروج المستخدم
   socket.on("disconnect", () => {
-
-    console.log("مستخدم خرج");
-
+    console.log("User disconnected");
   });
 
 });
 
-
-// اختبار السيرفر
 app.get("/", (req, res) => {
-
   res.send("Hassoni Chat Server يعمل بنجاح 🚀");
-
 });
 
-
-// تشغيل السيرفر
 server.listen(3000, () => {
-
   console.log("Server running on port 3000");
-
 });
