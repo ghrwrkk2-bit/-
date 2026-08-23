@@ -1,0 +1,218 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma, Arial;
+}
+
+body{
+    background:#080d18;
+    color:white;
+    height:100vh;
+}
+
+
+header{
+    height:70px;
+    background:#0d1422;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    border-bottom:1px solid #222;
+}
+
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#a855ff;
+}
+
+
+.logo i{
+    font-size:30px;
+}
+
+
+.top-menu button{
+    background:none;
+    border:0;
+    color:white;
+    margin:10px;
+    font-size:15px;
+}
+
+
+.layout{
+    display:grid;
+    grid-template-columns:260px 1fr 250px;
+    height:calc(100vh - 120px);
+}
+
+
+aside,
+.right{
+    background:#0c1320;
+    padding:20px;
+    border:1px solid #1e293b;
+}
+
+
+.profile{
+    text-align:center;
+}
+
+
+.profile img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:3px solid #a855ff;
+}
+
+
+.profile span{
+    color:#ffd700;
+}
+
+
+ul{
+    list-style:none;
+    margin-top:30px;
+}
+
+
+li{
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+
+li.active,
+li:hover{
+    background:#6d28d9;
+}
+
+
+.create{
+    width:100%;
+    padding:15px;
+    margin-top:30px;
+    background:#7c3aed;
+    color:white;
+    border:0;
+    border-radius:10px;
+}
+
+
+
+main{
+    display:flex;
+    flex-direction:column;
+    background:#111827;
+}
+
+
+.room{
+    padding:20px;
+    background:#131c2e;
+    text-align:center;
+}
+
+
+.messages{
+    flex:1;
+    padding:20px;
+    overflow:auto;
+}
+
+
+.message{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+    background:#1f2937;
+    padding:15px;
+    border-radius:15px;
+}
+
+
+.message img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+
+.owner{
+    color:#facc15;
+}
+
+
+.send{
+    display:flex;
+    padding:15px;
+    background:#0b1220;
+}
+
+
+.send input{
+    flex:1;
+    padding:15px;
+    border-radius:30px;
+    border:0;
+}
+
+
+.send button{
+    width:60px;
+    margin-right:10px;
+    border-radius:50%;
+    background:#7c3aed;
+    color:white;
+    border:0;
+}
+
+
+
+.online{
+    padding:15px;
+    background:#111827;
+    margin:10px;
+    border-radius:10px;
+}
+
+
+
+footer{
+    height:60px;
+    background:#0b1220;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+
+footer button{
+    background:none;
+    color:white;
+    border:0;
+}
+
+
+@media(max-width:800px){
+
+.layout{
+    grid-template-columns:1fr;
+}
+
+
+aside,
+.right{
+    display:none;
+}
+
+}
