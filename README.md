@@ -7,7 +7,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: tahoma, arial, sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background: #e2e8f0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    
+    html, body { 
+      height: 100dvh; 
+      width: 100%; 
+      overflow: hidden; 
+      background: #e2e8f0; 
+      display: flex; 
+      flex-direction: column; 
+    }
 
     /* 1. نافذة تسجيل الدخول */
     #login-modal, #register-modal {
@@ -34,19 +42,23 @@
       font-weight: bold; cursor: pointer; font-size: 0.95rem; margin-top: 5px;
     }
 
-    /* 2. الشريط العلوي */
+    /* 2. الشريط العلوي ثابت في القمة */
     .top-bar-icons {
-      background: #1e293b; color: #fff; display: flex; flex-direction: row; justify-content: space-between;
+      background: #1e293b; color: #fff; display: flex; flex-direction: row; justify-content: space-around;
       align-items: center; padding: 8px 4px; border-bottom: 1px solid #334155; font-size: 0.65rem; direction: rtl;
+      flex-shrink: 0;
     }
     .nav-item-top { text-align: center; cursor: pointer; color: #cbd5e1; flex: 1; }
     .nav-item-top i { font-size: 0.95rem; display: block; margin-bottom: 2px; color: #38bdf8; }
 
     /* 3. شريط المايكات */
-    .mics-section-container { display: flex; flex-direction: column; align-items: center; background: transparent; padding-top: 6px; }
+    .mics-section-container { 
+      display: flex; flex-direction: column; align-items: center; background: transparent; padding-top: 6px; 
+      flex-shrink: 0;
+    }
     .mics-group-frame {
       display: inline-flex; justify-content: center; gap: 10px; padding: 6px 14px;
-      border: 2px solid #3b82f6; border-radius: 30px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(4px);
+      border: 2px solid #3b82f6; border-radius: 30px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px);
       transition: all 0.3s ease;
     }
     .mics-group-frame.hidden-mics { display: none !important; }
@@ -67,30 +79,38 @@
       cursor: pointer; font-size: 0.75rem; color: #1e293b; font-weight: bold;
     }
 
-    /* 4. منطقة الرسائل واستعراض الاسم والرتبة بدون إطار */
-    .chat-area { flex: 1; overflow-y: auto; padding: 10px; background: #f1f5f9; display: flex; flex-direction: column; gap: 10px; }
+    /* 4. منطقة الشات مرنة وتمتد للتعبئة */
+    .chat-area { 
+      flex: 1; 
+      overflow-y: auto; 
+      padding: 10px; 
+      background: #f1f5f9; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+    }
     .msg-item { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
     .user-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6; }
     .msg-content { display: flex; flex-direction: column; }
     .user-header { display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 0.85rem; color: #0f172a; }
     
-    /* رتبة الكأس بدون أي إطار أو خلفية مجرد أيقونة شفافة */
+    /* رتبة الكأس شفافة بدون أي إطار */
     .rank-badge-trophy {
       font-size: 0.95rem; color: #f59e0b; display: inline-flex; align-items: center; margin-left: 2px;
     }
     
     .msg-text-plain { font-size: 0.9rem; color: #1e293b; margin-top: 2px; word-break: break-word; }
 
-    /* أنماط إطار الاسم */
+    /* أنماط أطر الأسماء */
     .frame-none { border: none; padding: 0; }
     .frame-gold { border: 2px solid #f59e0b; padding: 2px 6px; border-radius: 6px; background: rgba(245, 158, 11, 0.1); }
     .frame-neon { border: 2px solid #06b6d4; padding: 2px 6px; border-radius: 6px; box-shadow: 0 0 5px #06b6d4; }
     .frame-royal { border: 2px dashed #8b5cf6; padding: 2px 6px; border-radius: 6px; background: rgba(139, 92, 246, 0.1); }
 
-    /* 5. شريط الإدخال */
+    /* 5. شريط الإدخال ثابت أسفل الشات */
     .input-bar {
       background: #fff; padding: 6px 10px; display: flex; align-items: center; gap: 8px;
-      border-top: 1px solid #cbd5e1; direction: rtl;
+      border-top: 1px solid #cbd5e1; direction: rtl; flex-shrink: 0;
     }
     .icon-btn { background: none; border: none; font-size: 1.2rem; color: #475569; cursor: pointer; }
     .input-wrapper { flex: 1; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 20px; display: flex; align-items: center; padding: 0 10px; }
@@ -100,10 +120,10 @@
       border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
 
-    /* 6. الشريط السفلي */
+    /* 6. الشريط السفلي ثابت تماماً بقاع الشاشة */
     .bottom-main-nav {
       background: #ffffff; border-top: 1px solid #cbd5e1; display: flex;
-      justify-content: space-around; padding: 6px 0; direction: rtl;
+      justify-content: space-around; padding: 6px 0; direction: rtl; flex-shrink: 0;
     }
     .bottom-tab { text-align: center; color: #64748b; font-size: 0.65rem; text-decoration: none; flex: 1; cursor: pointer; }
     .bottom-tab i { font-size: 1.1rem; display: block; margin-bottom: 2px; }
@@ -143,7 +163,7 @@
     .online-list { max-height: 300px; overflow-y: auto; text-align: right; padding: 10px; }
     .online-item { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #f1f5f9; cursor: pointer; }
 
-    /* تصميم شاشة المحادثة الخاصة */
+    /* محادثة خاصة */
     .private-chat-box { display: flex; flex-direction: column; height: 350px; }
     .private-messages { flex: 1; overflow-y: auto; padding: 10px; background: #f8fafc; display: flex; flex-direction: column; gap: 8px; text-align: right; }
     .p-msg { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 0.85rem; }
@@ -168,7 +188,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // البريد الإلكتروني الخاص بالمالك
     const OWNER_EMAILS = ["ghrwrkk2@gmail.com", "ghrwrkk2@gmamil.com"];
     
     let currentUser = { 
@@ -303,7 +322,6 @@
           const avatarUrl = data.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.sender)}`;
           const frameClass = data.nameFrame || 'frame-none';
           
-          // رتبة بدون أي إطار أو دائرة خلفية مجرد أيقونة شفافة
           const rankBadgeHtml = data.isOwner ? `<i class="fa-solid fa-trophy rank-badge-trophy" title="مالك الموقع"></i>` : ``;
 
           onlineUsersMap.set(data.sender, {
@@ -395,7 +413,6 @@
       document.getElementById('self-edit-box').style.display = canEdit ? 'block' : 'none';
       document.getElementById('profile-actions').style.display = !isSelf ? 'grid' : 'none';
 
-      // إظهار خيار إهداء الرتب لصاحب الموقع فقط في بروفايل جميع الأعضاء
       const giftRankBtn = document.getElementById('owner-gift-rank-box');
       if (currentUser.isOwner && !isSelf) {
         giftRankBtn.style.display = 'block';
@@ -406,7 +423,6 @@
       document.getElementById('profile-modal').style.display = 'flex';
     };
 
-    /* فتح المحادثة الخاصة من بروفايل العضو */
     window.openPrivateChatFromProfile = () => {
       closeModal('profile-modal');
       document.getElementById('private-target-name').innerText = selectedUserForProfile.name;
@@ -438,7 +454,6 @@
       box.scrollTop = box.scrollHeight;
     }
 
-    /* منح رتبة للعضو من قبل المالك */
     window.giveRankToUser = () => {
       const selectedRank = document.getElementById('owner-rank-select').value;
       alert(`تم إهداء رتبة [${selectedRank}] للعضو ${selectedUserForProfile.name} بنجاح! 👑`);
@@ -734,13 +749,12 @@
     <div class="bottom-tab"><i class="fa-solid fa-store"></i>المتجر</div>
     <div class="bottom-tab"><i class="fa-solid fa-radio"></i>راديو</div>
     
-    <!-- زر المفتاح (التسجيل) -->
     <div class="bottom-tab" id="register-key-tab" style="color:#f59e0b;" onclick="openModal('register-modal')">
       <i class="fa-solid fa-key"></i>تسجيل
     </div>
   </div>
 
-  <!-- نافذة البروفايل الشاملة -->
+  <!-- باقي القوائم والنوافذ المنبثقة -->
   <div class="modal-overlay" id="profile-modal">
     <div class="modal-card">
       <span class="close-modal" onclick="closeModal('profile-modal')">&times;</span>
@@ -759,7 +773,6 @@
         <div class="action-btn" onclick="alert('بدء مكالمة')"><i class="fa-solid fa-phone"></i>مكالمة</div>
       </div>
 
-      <!-- صندوق إهداء الرتب المخصص لصاحب الموقع -->
       <div id="owner-gift-rank-box" style="display:none; padding:10px 15px; background:#fef3c7; border:1px solid #f59e0b; margin:10px; border-radius:10px; text-align:right;">
         <h4 style="font-size:0.8rem; color:#b45309; margin-bottom:5px;"><i class="fa-solid fa-crown"></i> لوحة صاحب الموقع: إهداء رتبة</h4>
         <select id="owner-rank-select" class="edit-input" style="margin-bottom:6px;">
@@ -824,7 +837,6 @@
     </div>
   </div>
 
-  <!-- نافذة المحادثة الخاصة -->
   <div class="modal-overlay" id="private-chat-modal">
     <div class="modal-card">
       <span class="close-modal" onclick="closeModal('private-chat-modal')">&times;</span>
@@ -841,7 +853,6 @@
     </div>
   </div>
 
-  <!-- نافذة قائمة الغرف -->
   <div class="modal-overlay" id="rooms-modal">
     <div class="modal-card">
       <span class="close-modal" onclick="closeModal('rooms-modal')">&times;</span>
@@ -856,7 +867,6 @@
     </div>
   </div>
 
-  <!-- باقي النوافذ المنبثقة -->
   <div class="modal-overlay" id="mic-confirm-modal">
     <div class="modal-card" style="padding:20px;">
       <h3>صعود المايك 🎙️</h3>
