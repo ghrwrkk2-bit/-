@@ -6,8 +6,15 @@
   <title>شات نرمين أحلى شات عربي</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: tahoma, arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: tahoma, arial, sans-serif; 
+      -webkit-tap-highlight-color: transparent; 
+    }
     
+    /* جعل الصفحة بأسلوب Flexbox برأسي متمدد 100% لتثبيت الأشرطة فوق وتحت */
     html, body { 
       height: 100dvh; 
       width: 100%; 
@@ -42,7 +49,7 @@
       font-weight: bold; cursor: pointer; font-size: 0.95rem; margin-top: 5px;
     }
 
-    /* 2. الشريط العلوي ثابت في القمة */
+    /* 2. الشريط العلوي - ثابت أعلا الصفحة */
     .top-bar-icons {
       background: #1e293b; color: #fff; display: flex; flex-direction: row; justify-content: space-around;
       align-items: center; padding: 8px 4px; border-bottom: 1px solid #334155; font-size: 0.65rem; direction: rtl;
@@ -79,7 +86,7 @@
       cursor: pointer; font-size: 0.75rem; color: #1e293b; font-weight: bold;
     }
 
-    /* 4. منطقة الشات مرنة وتمتد للتعبئة */
+    /* 4. منطقة الشات - تتمدد لتستغرق كامل منتصف الشاشة */
     .chat-area { 
       flex: 1; 
       overflow-y: auto; 
@@ -94,20 +101,18 @@
     .msg-content { display: flex; flex-direction: column; }
     .user-header { display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 0.85rem; color: #0f172a; }
     
-    /* رتبة الكأس شفافة بدون أي إطار */
     .rank-badge-trophy {
       font-size: 0.95rem; color: #f59e0b; display: inline-flex; align-items: center; margin-left: 2px;
     }
     
     .msg-text-plain { font-size: 0.9rem; color: #1e293b; margin-top: 2px; word-break: break-word; }
 
-    /* أنماط أطر الأسماء */
     .frame-none { border: none; padding: 0; }
     .frame-gold { border: 2px solid #f59e0b; padding: 2px 6px; border-radius: 6px; background: rgba(245, 158, 11, 0.1); }
     .frame-neon { border: 2px solid #06b6d4; padding: 2px 6px; border-radius: 6px; box-shadow: 0 0 5px #06b6d4; }
     .frame-royal { border: 2px dashed #8b5cf6; padding: 2px 6px; border-radius: 6px; background: rgba(139, 92, 246, 0.1); }
 
-    /* 5. شريط الإدخال ثابت أسفل الشات */
+    /* 5. شريط الكتابة - ثابت أسفل الشات */
     .input-bar {
       background: #fff; padding: 6px 10px; display: flex; align-items: center; gap: 8px;
       border-top: 1px solid #cbd5e1; direction: rtl; flex-shrink: 0;
@@ -120,7 +125,7 @@
       border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
 
-    /* 6. الشريط السفلي ثابت تماماً بقاع الشاشة */
+    /* 6. الشريط السفلي - ثابت أسفل الصفحة تماماً */
     .bottom-main-nav {
       background: #ffffff; border-top: 1px solid #cbd5e1; display: flex;
       justify-content: space-around; padding: 6px 0; direction: rtl; flex-shrink: 0;
